@@ -1,0 +1,70 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/polymer-jsonp/polymer-jsonp.html">
+<link rel="import" href="bower_components/cw-moment/cw-moment.html">
+<link rel="import" href="post-card.html">
+
+<polymer-element name="post-list" attributes="title name show url entries refresh">
+  <template>
+    <style>
+    :host {
+      display: block;
+      width: 100%;
+    }
+    post-card {
+      margin-bottom: 30px;
+    }
+
+    .entry_title {
+      text-decoration:none;
+      color:#03a9f4
+    }
+    </style>
+
+    <polymer-jsonp id="feed_data_{{show}}"
+                url="http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num={{entries}}&q={{url}}&callback="
+                auto="true"
+                response="{{data}}"
+                on-polymer-response="{{responseHandler}}"></polymer-jsonp>
+
+    <div layout vertical center hidden?="{{show != name}}">
+      <h2 style="margin-top:0">{{title}}</h2>
+      <template repeat="{{entry in feed.entries}}">
+        <post-card
+          favorite="{{entry.favorite}}"
+          on-favorite-tap="{{handleFavorite}}"
+          hidden?="{{show != name && !entry.favorite}}">
+          <h3><a href="{{entry.link}}" target="_blank" class="entry_title">{{entry.title}}</a></h3>
+          <p>{{entry.contentSnippet}}</p>
+          <small><cw-moment class="entry_published" datetime="{{entry.publishedDate}}" fromNow></cw-moment></small>
+        </post-card>
+      </template>
+    </div>
+  </template>
+
+  <script>
+  Polymer('post-list', {
+    //applyAuthorStyles: true,
+    //resetStyleInheritance: true,
+    url: '',
+    entries: 10,
+    refresh: 0,
+    lastUpdated: 'Not updated yet',
+
+    ready: function() {
+        var that = this;
+        if (this.refresh) {
+            setInterval(function(){
+                that.$['feed_data_'+that.name].go();
+            }, this.refresh);
+        }
+    },
+
+    responseHandler: function() {
+      if (this.data.responseStatus === 200) {
+          this.lastUpdated = new Date()
+          this.feed = this.data.responseData.feed;
+      }
+    }
+  });
+  </script>
+</polymer-element>
