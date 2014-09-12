@@ -2,23 +2,22 @@
 <html>
 
 <head>
-
   <title>사과뉴스</title>
-
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <script src="./bower_components/platform/platform.js"></script>
+  <script src="components/platform/platform.js"></script>
 
-  <link rel="import" href="./bower_components/core-elements/core-elements.html">
+  <link rel="import" href="components/core-elements/core-elements.html">
 
-  <link rel="import" href="./bower_components/font-roboto/roboto.html">
+  <link rel="import" href="components/font-roboto/roboto.html">
   <link rel="import"
-    href="./bower_components/core-header-panel/core-header-panel.html">
+    href="components/core-header-panel/core-header-panel.html">
   <link rel="import"
-    href="./bower_components/core-toolbar/core-toolbar.html">
+    href="components/core-toolbar/core-toolbar.html">
   <link rel="import"
-    href="./bower_components/paper-tabs/paper-tabs.html">
+    href="components/paper-tabs/paper-tabs.html">
 
-  <link rel="import" href="./bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="./components/paper-icon-button/paper-icon-button.html">
 
   <link rel="import" href="post-list.html">
 
@@ -53,7 +52,7 @@
   }
   @media (min-width: 481px) {
     #tabs {
-      width: 200px;
+    /*  width: 200px; */
     }
     .container {
       width: 400px;
@@ -65,8 +64,8 @@
 <body unresolved>
 <script type="text/javascript">
   (function(c,d,e,f,g,h,i){(function(a,b){d.addEventListener?c.addEventListener(a,b,!!0):c.attachEvent("on"+a,b)})('load',function(){h=d.createElement(e);i=d.getElementsByTagName(e)[0];h.async=1;h.src=f;i.parentNode.insertBefore(h,i);h.onload=h.onreadystatechange=function(){(typeof(g)+'')[0]=='f'&&(!this.readyState||this.readyState=='complete')?(g()):0}},false)})(window,document,'script','http://m1.daumcdn.net/adtc/js/mobilead.js',function(){
-    new AdamFullscreenAd({client : 'InterstitialTestClientId'}).init();
-    var bannerAd = new AdamBannerAd({client : 'TestClientId',position : 'TOP'});
+    new AdamFullscreenAd({client : '9b97Z1YT14867c2216b'}).init();
+    var bannerAd = new AdamBannerAd({client : '9b96Z1RT14867c174e6',position : 'TOP'});
 
     bannerAd.init();
 
@@ -90,13 +89,13 @@
     </core-toolbar>
 
     <div class="container" layout vertical center>
-      <post-list title="Back To The Mac" show="macnews" name="macnews" url="http://macnews.tistory.com/rss" entries="20" refresh="60000"></post-list>
+      <post-list siteName="Back To The Mac" show="macnews" name="macnews" url="http://macnews.tistory.com/rss" entries="20" refresh="60000"></post-list>
 
-      <post-list title="MacRumors" show="macrumors" name="macrumors" url="http://feeds.macrumors.com/MacRumors-All" entries="20" refresh="60000"></post-list>
+      <post-list siteName="MacRumors" show="macrumors" name="macrumors" url="http://feeds.macrumors.com/MacRumors-All" entries="20" refresh="60000"></post-list>
 
-      <post-list title="9TO5Mac"  show="9to5mac" name="9to5mac" url="http://9to5mac.com/feed/" entries="20" refresh="60000"></post-list>
+      <post-list siteName="9TO5Mac"  show="9to5mac" name="9to5mac" url="http://9to5mac.com/feed/" entries="20" refresh="60000"></post-list>
 
-      <post-list title="Cult of Mac" show="cultofmac" name="cultofmac" url="http://cultofmac.com.feedsportal.com/c/33797/f/606249/index.rss" entries="20" refresh="60000"></post-list>
+      <post-list siteName="Cult of Mac" show="cultofmac" name="cultofmac" url="http://cultofmac.com.feedsportal.com/c/33797/f/606249/index.rss" entries="20" refresh="60000"></post-list>
 
     </div>
 

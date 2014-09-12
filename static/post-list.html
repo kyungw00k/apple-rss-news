@@ -1,9 +1,9 @@
-<link rel="import" href="bower_components/polymer/polymer.html">
-<link rel="import" href="bower_components/polymer-jsonp/polymer-jsonp.html">
-<link rel="import" href="bower_components/cw-moment/cw-moment.html">
+<link rel="import" href="components/polymer/polymer.html">
+<link rel="import" href="components/polymer-jsonp/polymer-jsonp.html">
+<link rel="import" href="components/cw-moment/cw-moment.html">
 <link rel="import" href="post-card.html">
 
-<polymer-element name="post-list" attributes="title name show url entries refresh">
+<polymer-element name="post-list" attributes="siteName name show url entries refresh">
   <template>
     <style>
     :host {
@@ -27,7 +27,7 @@
                 on-polymer-response="{{responseHandler}}"></polymer-jsonp>
 
     <div layout vertical center hidden?="{{show != name}}">
-      <h2 style="margin-top:0">{{title}}</h2>
+      <h2 style="margin-top:0">{{siteName}}</h2>
       <template repeat="{{entry in feed.entries}}">
         <post-card
           favorite="{{entry.favorite}}"
