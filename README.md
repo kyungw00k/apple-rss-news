@@ -1,5 +1,4 @@
-## apple-rss-news app
-
+## simple-polymer-rss-reader
 Make simple rss reader site using [Polymer Project](http://www.polymer-project.org/).
 
 ### Requirements
